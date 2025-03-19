@@ -1,3 +1,3 @@
 #pragma once
 
-bool is_game_running;
+extern bool is_game_running;

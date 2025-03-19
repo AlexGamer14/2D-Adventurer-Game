@@ -16,7 +16,7 @@ void procces_input() {
 			is_game_running = false;
 			break;
 		case SDL_EVENT_KEY_DOWN:
-			switch (event.key.type) {
+			switch (event.key.key) {
 				case FORWARDKEY:
 					cout << "Forward key pressed\n";
 					break;
@@ -31,6 +31,9 @@ void procces_input() {
 					break;
 				case JUMPKEY:
 					cout << "Jump key pressed\n";
+					break;
+				case SDLK_Q:
+					is_game_running = false;
 					break;
 				default:
 					break;

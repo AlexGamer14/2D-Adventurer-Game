@@ -13,7 +13,7 @@ SDL_Renderer* renderer = NULL;
 bool is_game_running = false;
 
 int init_win(void) {
-	window = SDL_CreateWindow("Pacman", 1920, 1080, SDL_WINDOW_BORDERLESS);
+	window = SDL_CreateWindow("Pacman", 1920, 1080, SDL_WINDOW_RESIZABLE);
 
 	if (!window) {
 		fprintf(stderr, "Window go boom boom\n");
@@ -75,7 +75,7 @@ int main() {
 	is_game_running = true;
 
 	while (is_game_running) {
-
+		procces_input();
 	}
 
 	return destroy_all();
