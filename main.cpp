@@ -3,6 +3,8 @@
 
 #include "input_controller.h"
 #include "main.h"
+#include "graphics.h"
+#include "player.h"
 
 #include <iostream>
 using namespace std;
@@ -10,7 +12,11 @@ using namespace std;
 SDL_Window* window = NULL;
 SDL_Renderer* renderer = NULL;
 
+player* Player = NULL;
+
 bool is_game_running = false;
+
+SDL_Texture plrTexture;
 
 int init_win(void) {
 	window = SDL_CreateWindow("Pacman", 1920, 1080, SDL_WINDOW_RESIZABLE);
@@ -52,6 +58,10 @@ int destroy_all() {
 	{
 		SDL_DestroyRenderer(renderer);
 		SDL_DestroyWindow(window);
+
+		renderer = NULL;
+		window = NULL;
+
 		SDL_Quit();
 
 		return PASS;
@@ -63,6 +73,12 @@ int destroy_all() {
 	}
 }
 
+void update() {
+	SetScreenColor(255, 255, 255, 255);
+	Player->draw();
+	SDL_RenderPresent(renderer);
+	procces_input();
+}
 
 int main() {
 	cout << "Hello, World!";
@@ -74,8 +90,20 @@ int main() {
 
 	is_game_running = true;
 
+	char plrFilePath[] = "C:\\Users\\alexa\\source\\repos\\Pacman\\Top_Down_Adventure_Pack_v.1.0\\Char_Sprites\\char_spritesheet.png";
+
+	try
+	{
+		Player = new player(plrFilePath);
+	}
+	catch (const std::exception&)
+	{
+		cout << "Failed to create player";
+	}
+
+
 	while (is_game_running) {
-		procces_input();
+		update();
 	}
 
 	return destroy_all();
