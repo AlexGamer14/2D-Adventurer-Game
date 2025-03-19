@@ -1,7 +1,8 @@
 #include <SDL3/SDL.h>
 #include "const.h"
 
-#include "input_controller.hpp"
+#include "input_controller.h"
+#include "main.h"
 
 #include <iostream>
 using namespace std;
@@ -46,6 +47,23 @@ int init() {
 }
 
 
+int destroy_all() {
+	try
+	{
+		SDL_DestroyRenderer(renderer);
+		SDL_DestroyWindow(window);
+		SDL_Quit();
+
+		return PASS;
+	}
+	catch (const std::exception&)
+	{
+		fprintf(stderr, "Unable to succsesfully shut down SDL.%s\n", SDL_GetError());
+		return FAIL;
+	}
+}
+
+
 int main() {
 	cout << "Hello, World!";
 
@@ -60,5 +78,5 @@ int main() {
 
 	}
 
-	return PASS;
+	return destroy_all();
 }
