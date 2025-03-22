@@ -1,13 +1,15 @@
 #pragma once
 
-#include "game_object.h"
+#include "entity.h"
 
-class player : public game_object {
+class player : public entity {
 public:
 	float walkSpeed;
 	float runSpeed;
 	
 	float jumpPower;
 
-	player(char texPath[]);
+	SDL_FRect player_state;
+
+	player(char texPath[],float mov_speed , SDL_FRect plrtransform);
 };

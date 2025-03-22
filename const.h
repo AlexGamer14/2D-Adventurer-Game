@@ -7,8 +7,12 @@
 #define FAIL 1
 #define PASS 0
 
+#define MOVEMENT_SPEED 30
+
 #define FORWARDKEY SDLK_W
 #define BACKWARDKEY SDLK_S
 #define LEFTKEY SDLK_A
 #define RIGHTKEY SDLK_D
-#define JUMPKEY SDLK_SPACE
+
+#define MAX_ENTITIES 100
+#define MAX_GAMEOBJECTS 1000

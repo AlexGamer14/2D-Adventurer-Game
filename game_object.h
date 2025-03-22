@@ -6,9 +6,9 @@
 class game_object {
 public:
     SDL_Texture* texture;
-    int x;
-    int y;
+    SDL_FRect position_size;
 
+    game_object();
     game_object(char texPath[]);
-    int draw();
+    int draw(SDL_FRect state);
 };
