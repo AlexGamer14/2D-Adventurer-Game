@@ -1,3 +1,5 @@
+#pragma once
+
 #include <SDL3/SDL.h>
 
 // Subsystems that will be used for SDL
@@ -9,10 +11,10 @@
 
 #define MOVEMENT_SPEED 30
 
-#define FORWARDKEY SDLK_W
-#define BACKWARDKEY SDLK_S
-#define LEFTKEY SDLK_A
-#define RIGHTKEY SDLK_D
+#define FORWARDKEY SDL_SCANCODE_W
+#define BACKWARDKEY SDL_SCANCODE_S
+#define LEFTKEY SDL_SCANCODE_A
+#define RIGHTKEY SDL_SCANCODE_D
 
 #define MAX_ENTITIES 100
 #define MAX_GAMEOBJECTS 1000

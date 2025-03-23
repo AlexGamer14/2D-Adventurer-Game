@@ -8,6 +8,7 @@
 #include <vector>
 using namespace std;
 
+
 game_object::game_object() {
 	fprintf(stderr, "USING WRONG GAMEOBJECT CONSTRUCTOR");
 }

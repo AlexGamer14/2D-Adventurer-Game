@@ -8,6 +8,7 @@
 #include "graphics.h"
 #include "player.h"
 #include "utills.h"
+#include "text_obj.h"
 
 #include <iostream>
 #include <vector>
@@ -20,6 +21,7 @@ SDL_Surface* textSurface = nullptr;
 player* Player = NULL;
 
 std::vector<game_object> all_game_objects;
+vector<Text> all_text_objects;
 
 bool is_game_running = false;
 
@@ -28,7 +30,7 @@ SDL_Texture plrTexture;
 TTF_Font* baseFont = nullptr;
 
 int init_win(void) {
-	window = SDL_CreateWindow("Pacman", 1920, 1080, SDL_WINDOW_RESIZABLE);
+	window = SDL_CreateWindow("Pacman", 2560, 1920, SDL_WINDOW_FULLSCREEN);
 
 	if (!window) {
 		fprintf(stderr, "Window go boom boom\n");
@@ -57,14 +59,14 @@ int init() {
 		std::cerr << "Failed to initialize SDL_ttf: " << SDL_GetError() << std::endl;
 		return FAIL;
 	}
-	baseFont = TTF_OpenFont("seguivar.ttf", 24);
+	baseFont = TTF_OpenFont("C:\\Windows\\Fonts\\seguivar.ttf", 24);
 	if (!baseFont) {
 		fprintf(stderr, "Failed to load font \n");
 		return FAIL;
 	}
 
 	if (init_win() == FAIL) {
-		cout << "Initializing of window failed";
+		cout << "Initializing of window failed\n";
 		return FAIL;
 	}
 
@@ -92,6 +94,7 @@ int destroy_all() {
 		TTF_Quit();
 		SDL_Quit();
 		
+		delete Player;
 
 		return PASS;
 	}
@@ -102,18 +105,23 @@ int destroy_all() {
 	}
 }
 
-void update() {
+void Render() {
 	SetScreenColor(255, 255, 255, 255);
-
-	Player->physics();
 
 	Player->draw(Player->player_state);
 	SDL_RenderPresent(renderer);
+}
+
+void update() {
 	procces_input();
+
+	Player->physics();
+
+	Render();
 }
 
 int main() {
-	cout << "Hello, World!";
+	cout << "Hello, World!\n";
 
 	if (init() == FAIL) {
 		fprintf(stderr, "Code go boom boom somewhere\n");
@@ -122,9 +130,9 @@ int main() {
 
 	is_game_running = true;
 
-	char plrFilePath[] = "C:\\Users\\alexa\\source\\repos\\Pacman\\Top_Down_Adventure_Pack_v.1.0\\Char_Sprites\\char_spritesheet.png";
+	char plrFilePath[] = ".\\Resources\\Char_Sprites\\char_spritesheet.png";
 
-	SDL_FRect playerStartTransform = { 500, 500, 100, 100 };
+	SDL_FRect playerStartTransform = { 300, 150, 50, 50 };
 
 	try
 	{
@@ -132,8 +140,11 @@ int main() {
 	}
 	catch (const std::exception&)
 	{
-		cout << "Failed to create player";
+		cout << "Failed to create player\n";
 	}
+
+
+	SDL_SetRenderLogicalPresentation(renderer, 640, 360, SDL_LOGICAL_PRESENTATION_LETTERBOX);
 
 
 	while (is_game_running) {

@@ -15,38 +15,32 @@ void procces_input() {
 		case SDL_EVENT_QUIT:
 			is_game_running = false;
 			break;
-		case SDL_EVENT_KEY_DOWN:
-			switch (event.key.key) {
-				case FORWARDKEY:
-					Player->velocity_y = -Player->movement_speed;
-
-					cout << "Forward key pressed\n";
-					break;
-				case BACKWARDKEY:
-					Player->velocity_y = Player->movement_speed;
-					cout << "Backward key pressed\n";
-					break;
-				case LEFTKEY:
-					Player->velocity_x = -Player->movement_speed;
-
-					cout << "Left key pressed\n";
-					break;
-				case RIGHTKEY:
-					Player->velocity_x = Player->movement_speed;
-
-					cout << "Right key pressed\n";
-					break;
-				case SDLK_Q:
-					is_game_running = false;
-					break;
-				default:
-					break;
-			}
-			break;
 		default:
-			Player->velocity_x = 0;
-			Player->velocity_y = 0;
 			break;
 		}
+	}
+
+
+	Player->velocity_x = 0;
+	Player->velocity_y = 0;
+
+
+	const bool* keyboard_state = SDL_GetKeyboardState(NULL);
+
+	if (keyboard_state[FORWARDKEY]) {
+		Player->velocity_y = -Player->movement_speed;
+	}
+	if (keyboard_state[BACKWARDKEY]) {
+		Player->velocity_y = Player->movement_speed;
+	}
+	if (keyboard_state[LEFTKEY]) {
+		Player->velocity_x = -Player->movement_speed;
+	}
+	if (keyboard_state[RIGHTKEY]) {
+		Player->velocity_x = Player->movement_speed;
+	}
+
+	if (keyboard_state[SDL_SCANCODE_Q]) {
+		is_game_running = false;
 	}
 }
