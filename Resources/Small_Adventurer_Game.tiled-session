@@ -1,0 +1,74 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "jsonmap.json",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "fileStates": {
+        "Overworld_Tileset.tsx": {
+            "scaleInDock": 2,
+            "scaleInEditor": 1
+        },
+        "Water edge.tsx": {
+            "scaleInDock": 2,
+            "scaleInEditor": 1
+        },
+        "jsonmap.json": {
+            "scale": 5.5,
+            "selectedLayer": 3,
+            "viewCenter": {
+                "x": 145.18181818181816,
+                "y": 104.18181818181819
+            }
+        },
+        "jsonmap.json#Overworld_Tileset": {
+            "scaleInDock": 1.5
+        },
+        "jsonmap.json#Water edge": {
+            "scaleInDock": 1
+        },
+        "jsonmap.json#water_tile_anim_strip_8": {
+            "scaleInDock": 1
+        },
+        "untitled.tmx": {
+            "scale": 5.5,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 180.45454545454547,
+                "y": 121.81818181818181
+            }
+        },
+        "water_tile_anim_strip_8.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        }
+    },
+    "last.imagePath": "C:/Users/alexa/source/repos/Pacman/Resources/Tiles_(animated)/Overworld",
+    "map.height": 60,
+    "map.lastUsedFormat": "json",
+    "map.tileHeight": 16,
+    "map.tileWidth": 16,
+    "map.width": 60,
+    "openFiles": [
+        "jsonmap.json",
+        "Overworld_Tileset.tsx",
+        "Water edge.tsx",
+        "water_tile_anim_strip_8.tsx"
+    ],
+    "project": "Small_Adventurer_Game.tiled-project",
+    "recentFiles": [
+        "water_tile_anim_strip_8.tsx",
+        "Water edge.tsx",
+        "Overworld_Tileset.tsx",
+        "jsonmap.json",
+        "untitled.tmx"
+    ],
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    }
+}

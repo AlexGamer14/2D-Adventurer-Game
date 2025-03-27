@@ -1,7 +1,6 @@
-#include <SDL3/SDL.h>
-#include <SDL3_image/SDL_image.h>
-
 #pragma once
+
+#include <SDL3/SDL.h>
 
 class game_object {
 public:

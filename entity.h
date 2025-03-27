@@ -1,6 +1,8 @@
 #pragma once
 
 #include "game_object.h"
+#include <SDL3/SDL.h>
+#include "utills.h"
 
 class entity : public game_object {
 public:

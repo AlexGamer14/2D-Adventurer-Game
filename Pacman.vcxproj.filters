@@ -39,6 +39,12 @@
     <ClCompile Include="text_obj.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="map.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="animation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="const.h">
@@ -68,9 +74,15 @@
     <ClInclude Include="text_obj.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="map.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="animation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Top_Down_Adventure_Pack_v.1.0\Char_Sprites\char_spritesheet.png">
+    <Image Include="Resources\Char_Sprites\char_spritesheet.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

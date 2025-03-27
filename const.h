@@ -18,3 +18,8 @@
 
 #define MAX_ENTITIES 100
 #define MAX_GAMEOBJECTS 1000
+
+struct Vector2{
+	float x;
+	float y;
+};

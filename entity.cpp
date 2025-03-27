@@ -1,8 +1,4 @@
-#include <SDL3/SDL.h>
-#include "game_object.h"
 #include "entity.h"
-
-#include "utills.h"
 
 void entity::physics()
 {

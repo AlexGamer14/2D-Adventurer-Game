@@ -12,3 +12,7 @@ void updateDeltaTime() {
     deltaTime = (float)(currentTime - lastTime) / frequency;  // Convert to seconds
     lastTime = currentTime;
 }
+
+bool checkCollision(SDL_FRect* a, SDL_FRect* b) {
+	return SDL_HasRectIntersectionFloat(a, b);
+}

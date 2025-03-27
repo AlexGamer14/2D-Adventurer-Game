@@ -1,6 +1,4 @@
-#include "game_object.h"
 #include "player.h"
-
 
 SDL_FRect playerStartState = { 17,14,15,18 };
 
@@ -11,6 +9,7 @@ player::player(char texPath[],float mov_speed ,SDL_FRect plrtransform) : entity(
 	jumpPower = 20;
 
 	position_size = plrtransform;
-
 	player_state = playerStartState;
+
+	animator = new Animator(4, 16, 16, 0.33, true);
 }

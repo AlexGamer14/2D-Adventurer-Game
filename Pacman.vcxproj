@@ -139,28 +139,32 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="animation.cpp" />
     <ClCompile Include="entity.cpp" />
     <ClCompile Include="game_object.cpp" />
     <ClCompile Include="graphics.cpp" />
     <ClCompile Include="input_controller.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="map.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="text_obj.cpp" />
     <ClCompile Include="utills.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="animation.h" />
     <ClInclude Include="const.h" />
     <ClInclude Include="entity.h" />
     <ClInclude Include="game_object.h" />
     <ClInclude Include="graphics.h" />
     <ClInclude Include="input_controller.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="map.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="text_obj.h" />
     <ClInclude Include="utills.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Top_Down_Adventure_Pack_v.1.0\Char_Sprites\char_spritesheet.png" />
+    <Image Include="Resources\Char_Sprites\char_spritesheet.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -9,6 +9,7 @@
 #include "player.h"
 #include "utills.h"
 #include "text_obj.h"
+#include "map.h"
 
 #include <iostream>
 #include <vector>
@@ -19,15 +20,18 @@ SDL_Renderer* renderer = NULL;
 SDL_Surface* textSurface = nullptr;
 
 player* Player = NULL;
+Text* fpsText = NULL;
 
 std::vector<game_object> all_game_objects;
-vector<Text> all_text_objects;
 
 bool is_game_running = false;
 
 SDL_Texture plrTexture;
 
 TTF_Font* baseFont = nullptr;
+
+float averageFPS = 0;
+int frameCounter = 0;
 
 int init_win(void) {
 	window = SDL_CreateWindow("Pacman", 2560, 1920, SDL_WINDOW_FULLSCREEN);
@@ -70,6 +74,11 @@ int init() {
 		return FAIL;
 	}
 
+	if (load_map() == FAIL) {
+		fprintf(stderr, "Failed to load map\n");
+		return FAIL;
+	}
+
 	return PASS;
 }
 
@@ -96,6 +105,8 @@ int destroy_all() {
 		
 		delete Player;
 
+		cleanup();
+
 		return PASS;
 	}
 	catch (const std::exception&)
@@ -108,18 +119,31 @@ int destroy_all() {
 void Render() {
 	SetScreenColor(255, 255, 255, 255);
 
-	Player->draw(Player->player_state);
+	render_map();
+
+	Player->draw(Player->animator->get_src());
+	fpsText->draw();
+
+	averageFPS += 1 / deltaTime;
+	frameCounter += 1;
+
+	fpsText->setText("Fps: " + to_string(static_cast<int>(std::floor(averageFPS/frameCounter))));
+
 	SDL_RenderPresent(renderer);
 }
 
 void update() {
 	procces_input();
 
+	Player->animator->update(deltaTime);
+	/*if (checkCollision(Player->position_size, )) {
+	}*/
 	Player->physics();
+
 
 	Render();
 }
-
+   
 int main() {
 	cout << "Hello, World!\n";
 
@@ -127,25 +151,27 @@ int main() {
 		fprintf(stderr, "Code go boom boom somewhere\n");
 		return FAIL;
 	}
+	SDL_SetRenderLogicalPresentation(renderer, 640, 360, SDL_LOGICAL_PRESENTATION_LETTERBOX);
 
 	is_game_running = true;
 
 	char plrFilePath[] = ".\\Resources\\Char_Sprites\\char_spritesheet.png";
 
-	SDL_FRect playerStartTransform = { 300, 150, 50, 50 };
+	SDL_FRect playerStartTransform = { 100, 100, 25, 25 };
 
 	try
 	{
-		Player = new player(plrFilePath, 300, playerStartTransform);
+		Player = new player(plrFilePath, 100, playerStartTransform);
 	}
 	catch (const std::exception&)
 	{
 		cout << "Failed to create player\n";
 	}
 
+	fpsText = new Text({ 0,0 }, { 120, 40}, {0,0,0,255});
 
-	SDL_SetRenderLogicalPresentation(renderer, 640, 360, SDL_LOGICAL_PRESENTATION_LETTERBOX);
-
+	Player->animator->play();
+	Player->animator->baseFrameOffset = Player->idle_animation_offset_down;
 
 	while (is_game_running) {
 		updateDeltaTime();
