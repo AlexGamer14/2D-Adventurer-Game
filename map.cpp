@@ -9,9 +9,9 @@ cute_tiled_layer_t* layers;
 
 Texture* texture;
 
-//std::vector<std::vector<int>> map_collision(;
+std::vector<std::vector<int>> map_collision(60, std::vector<int>(60));
 
-void render_map() {
+void render_map(float offset_x, float offset_y) {
     cute_tiled_layer_t* temp_layer = layers;
 
     while (temp_layer) {
@@ -51,8 +51,8 @@ void render_map() {
                 };
 
                 SDL_FRect dst = {
-                  j * 24,
-                  i * 24,
+                  j * 24+ offset_x,
+                  i * 24+offset_y,
                   24,
                   24
                 };

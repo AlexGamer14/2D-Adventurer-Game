@@ -19,6 +19,9 @@
 #define MAX_ENTITIES 100
 #define MAX_GAMEOBJECTS 1000
 
+#define SCREEN_WIDTH 640
+#define SCREEN_HEIGHT 360
+
 struct Vector2{
 	float x;
 	float y;

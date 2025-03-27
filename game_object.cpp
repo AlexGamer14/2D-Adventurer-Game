@@ -24,7 +24,8 @@ game_object::game_object(char texPath[]) {
 	all_game_objects.push_back(*this);
 }
 
-int game_object::draw(SDL_FRect state) {
-	SDL_RenderTexture(renderer, game_object::texture,&state, &position_size);
+int game_object::draw(SDL_FRect state, float offset_x, float offset_y) {
+	SDL_FRect final_pos = { position_size.x - offset_x, position_size.y - offset_y, position_size.w, position_size.h };
+	SDL_RenderTexture(renderer, game_object::texture,&state, &final_pos);
 	return 0;
 }

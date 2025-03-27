@@ -10,6 +10,7 @@
 #include "utills.h"
 #include "text_obj.h"
 #include "map.h"
+#include "camera.h"
 
 #include <iostream>
 #include <vector>
@@ -119,9 +120,9 @@ int destroy_all() {
 void Render() {
 	SetScreenColor(255, 255, 255, 255);
 
-	render_map();
+	render_map(-camera.x,-camera.y);
 
-	Player->draw(Player->animator->get_src());
+	Player->draw(Player->animator->get_src(), camera.x, camera.y);
 	fpsText->draw();
 
 	averageFPS += 1 / deltaTime;
@@ -140,6 +141,7 @@ void update() {
 	}*/
 	Player->physics();
 
+	updateCamera(Player->position_size.x, Player->position_size.y);
 
 	Render();
 }

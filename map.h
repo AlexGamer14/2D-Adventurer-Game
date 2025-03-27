@@ -8,7 +8,7 @@
 #include <iostream>
 
 int load_map();
-void render_map();
+void render_map(float offset_x, float offset_y);
 void cleanup();
 
 struct Texture {
