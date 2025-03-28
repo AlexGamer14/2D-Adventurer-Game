@@ -9,7 +9,7 @@ cute_tiled_layer_t* layers;
 
 Texture* texture;
 
-std::vector<std::vector<int>> map_collision(60, std::vector<int>(60));
+std::vector<std::vector<bool>> map_collision(60, std::vector<bool>(60));
 
 void render_map(float offset_x, float offset_y) {
     cute_tiled_layer_t* temp_layer = layers;
@@ -65,6 +65,23 @@ void render_map(float offset_x, float offset_y) {
     }
 }
 
+void init_collision() {
+    // Left fence wall collision
+    map_collision[2][2] = true;
+    map_collision[3][2] = true;
+    map_collision[4][2] = true;
+    map_collision[5][2] = true;
+    map_collision[6][2] = true;
+    map_collision[7][2] = true;
+    map_collision[8][2] = true;
+
+	// Bottom fence wall collision
+    map_collision[8][3] = true;
+    map_collision[8][4] = true;
+    map_collision[8][5] = true;
+}
+
+
 int load_map() {
 	char map_file[] = "C:\\Users\\alexa\\source\\repos\\Pacman\\Resources\\jsonmap.json";
 
@@ -103,6 +120,8 @@ int load_map() {
 		current_tileset = current_tileset->next;
 		current_texture=current_texture->next;
 	}
+
+	init_collision();
 
 	return PASS;
 }

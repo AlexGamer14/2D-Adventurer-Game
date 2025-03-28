@@ -7,6 +7,8 @@
 #include <string>
 #include <iostream>
 
+extern std::vector<std::vector<bool>> map_collision;
+
 int load_map();
 void render_map(float offset_x, float offset_y);
 void cleanup();

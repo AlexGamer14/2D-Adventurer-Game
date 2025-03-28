@@ -11,7 +11,8 @@ public:
 	float velocity_x;
 	float velocity_y;
 
+	bool use_collision;
 
 	void physics();
-	entity(char texPath[],  float movement_speed);
+	entity(char texPath[],  float movement_speed, bool useCollision);
 };

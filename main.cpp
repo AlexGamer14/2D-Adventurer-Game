@@ -163,7 +163,7 @@ int main() {
 
 	try
 	{
-		Player = new player(plrFilePath, 100, playerStartTransform);
+		Player = new player(plrFilePath, 100, playerStartTransform, true);
 	}
 	catch (const std::exception&)
 	{

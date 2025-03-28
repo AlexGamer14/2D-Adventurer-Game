@@ -28,5 +28,5 @@ public:
 	// d down u up l left r right
 	char dir = 'd';
 
-	player(char texPath[],float mov_speed , SDL_FRect plrtransform);
+	player(char texPath[],float mov_speed , SDL_FRect plrtransform, bool useCollision);
 };
