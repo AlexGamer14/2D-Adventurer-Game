@@ -17,11 +17,11 @@
             "scaleInEditor": 1
         },
         "jsonmap.json": {
-            "scale": 0.33,
+            "scale": 8,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": -1580.30303030303,
-                "y": 799.9999999999998
+                "x": 62.6875,
+                "y": 91.125
             }
         },
         "jsonmap.json#Overworld_Tileset": {

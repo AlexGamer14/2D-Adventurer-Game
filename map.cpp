@@ -9,7 +9,8 @@ cute_tiled_layer_t* layers;
 
 Texture* texture;
 
-std::vector<std::vector<bool>> map_collision(60, std::vector<bool>(60));
+std::vector<std::vector<bool>> map_collision(120, std::vector<bool>(120));
+std::vector<SDL_FRect> collision_rects;
 
 void render_map(float offset_x, float offset_y) {
     cute_tiled_layer_t* temp_layer = layers;
@@ -66,24 +67,177 @@ void render_map(float offset_x, float offset_y) {
 }
 
 void init_collision() {
+    // FENCE NEXT TO HOUSE COLLISION
     // Left fence wall collision
-    map_collision[2][2] = true;
-    map_collision[3][2] = true;
-    map_collision[4][2] = true;
-    map_collision[5][2] = true;
-    map_collision[6][2] = true;
-    map_collision[7][2] = true;
-    map_collision[8][2] = true;
 
-	// Bottom fence wall collision
-    map_collision[8][3] = true;
+	collision_rects.push_back({ 48, 48, 24*6, 24 });
+
+    /*map_collision[4][4] = true;
+    map_collision[5][4] = true;
+    map_collision[6][4] = true;
+    map_collision[7][4] = true;
     map_collision[8][4] = true;
+    map_collision[9][4] = true;
+    map_collision[10][4] = true;
+    map_collision[11][4] = true;
+    map_collision[12][4] = true;
+    map_collision[13][4] = true;
+    map_collision[14][4] = true;
+    map_collision[15][4] = true;
+    map_collision[16][4] = true;
+    map_collision[17][4] = true;
+    map_collision[18][4] = true;
+
+    map_collision[4][5] = true;
+    map_collision[5][5] = true;
+    map_collision[6][5] = true;
+    map_collision[7][5] = true;
     map_collision[8][5] = true;
-}
+    map_collision[9][5] = true;
+    map_collision[10][5] = true;
+    map_collision[11][5] = true;
+    map_collision[12][5] = true;
+    map_collision[13][5] = true;
+    map_collision[14][5] = true;
+    map_collision[15][5] = true;
+    map_collision[16][5] = true;
+    map_collision[17][5] = true;
+    map_collision[18][5] = true;*/
+
+	//Bottom fence wall collision
+    map_collision[18][6] = true;
+    map_collision[18][7] = true;
+    map_collision[18][8] = true;
+	map_collision[18][9] = true;
+	map_collision[18][10] = true;
+
+    map_collision[17][6] = true;
+    map_collision[17][7] = true;
+    map_collision[17][8] = true;
+	map_collision[17][9] = true;
+	map_collision[17][10] = true;
+
+
+    map_collision[18][15] = true;
+    map_collision[18][16] = true;
+    map_collision[18][17] = true;
+    map_collision[18][18] = true;
+    map_collision[18][19] = true;
+
+    map_collision[17][15] = true;
+    map_collision[17][16] = true;
+    map_collision[17][17] = true;
+    map_collision[17][18] = true;
+    map_collision[17][19] = true;
+
+	// Right fence wall collision
+
+    map_collision[4][20] = true;
+    map_collision[5][20] = true;
+    map_collision[6][20] = true;
+    map_collision[7][20] = true;
+    map_collision[8][20] = true;
+    map_collision[9][20] = true;
+    map_collision[10][20] = true;
+    map_collision[11][20] = true;
+    map_collision[12][20] = true;
+    map_collision[13][20] = true;
+    map_collision[14][20] = true;
+    map_collision[15][20] = true;
+    map_collision[16][20] = true;
+    map_collision[17][20] = true;
+    map_collision[18][20] = true;
+
+    map_collision[4][21] = true;
+    map_collision[5][21] = true;
+    map_collision[6][21] = true;
+    map_collision[7][21] = true;
+    map_collision[8][21] = true;
+    map_collision[9][21] = true;
+    map_collision[10][21] = true;
+    map_collision[11][21] = true;
+    map_collision[12][21] = true;
+    map_collision[13][21] = true;
+    map_collision[14][21] = true;
+    map_collision[15][21] = true;
+    map_collision[16][21] = true;
+    map_collision[17][21] = true;
+    map_collision[18][21] = true;
+
+	// Top fence wall collision
+    map_collision[4][6] = true;
+    map_collision[4][7] = true;
+    map_collision[4][8] = true;
+    map_collision[4][9] = true;
+    map_collision[4][10] = true;
+    map_collision[4][11] = true;
+    map_collision[4][12] = true;
+    map_collision[4][13] = true;
+    map_collision[4][14] = true;
+    map_collision[4][15] = true;
+    map_collision[4][16] = true;
+    map_collision[4][17] = true;
+    map_collision[4][18] = true;
+    map_collision[4][19] = true;
+
+    // House collision
+
+    map_collision[8][5] = true;
+    map_collision[8][6] = true;
+    map_collision[8][7] = true;
+    map_collision[8][8] = true;
+    map_collision[8][9] = true;
+    map_collision[8][10] = true;
+    map_collision[8][11] = true;
+    map_collision[8][12] = true;
+    map_collision[8][13] = true;
+    map_collision[8][14] = true;
+
+    map_collision[9][5] = true;
+    map_collision[9][6] = true;
+    map_collision[9][7] = true;
+    map_collision[9][8] = true;
+    map_collision[9][9] = true;
+    map_collision[9][10] = true;
+    map_collision[9][11] = true;
+    map_collision[9][12] = true;
+    map_collision[9][13] = true;
+    map_collision[9][14] = true;
+                  
+    map_collision[10][5] = true;
+    map_collision[10][6] = true;
+    map_collision[10][7] = true;
+    map_collision[10][8] = true;
+    map_collision[10][9] = true;
+    map_collision[10][10] = true;
+    map_collision[10][11] = true;
+    map_collision[10][12] = true;
+    map_collision[10][13] = true;
+    map_collision[10][14] = true;
+
+    map_collision[11][5] = true;
+    map_collision[11][6] = true;
+    map_collision[11][7] = true;
+    map_collision[11][8] = true;
+    map_collision[11][9] = true;
+    map_collision[11][10] = true;
+    map_collision[11][11] = true;
+    map_collision[11][12] = true;
+    map_collision[11][13] = true;
+    map_collision[11][14] = true;
+
+    map_collision[12][5] = true;
+    map_collision[12][6] = true;
+    map_collision[12][7] = true;
+    map_collision[12][8] = true;
+    map_collision[12][9] = true;
+    map_collision[12][10] = true;
+    map_collision[12][14] = true;
+}                 
 
 
 int load_map() {
-	char map_file[] = "C:\\Users\\alexa\\source\\repos\\Pacman\\Resources\\jsonmap.json";
+	char map_file[] = "./Resources/jsonmap.json";
 
 	map = cute_tiled_load_map_from_file(map_file, NULL);
 	if (!map) {
@@ -97,7 +251,7 @@ int load_map() {
 	texture = new Texture();
 	Texture* current_texture = texture;
 
-	std::string basePath = "C:\\Users\\alexa\\source\\repos\\Pacman\\Resources\\";
+	std::string basePath = "./Resources/";
 
 	while (current_tileset) {
 		

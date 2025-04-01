@@ -7,7 +7,7 @@
 #include <string>
 #include <iostream>
 
-extern std::vector<std::vector<bool>> map_collision;
+extern std::vector<SDL_FRect> collision_rects;
 
 int load_map();
 void render_map(float offset_x, float offset_y);

@@ -15,36 +15,31 @@ void entity::physics()
 
 	if (!use_collision) return;
 
-	for (int i = 0; i < 60; i++) {
-		for (int j = 0; j < 60; j++) {
-			if (map_collision[i][j]) {
-				SDL_FRect temp = { j * 24, i * 24, 24, 24 };
-				if (checkCollision(&position_size, &temp)) {
-					position_size.x -= velocity_x * deltaTime;
+	for (int i = 0; i < collision_rects.size(); i++) {
+		if (checkCollision(&position_size, &collision_rects[i])) {
+			position_size.x -= velocity_x * deltaTime;
 
-					bool runX = false;
-					bool runY = false;
+			bool runX = false;
+			bool runY = false;
 
-					if (checkCollision(&position_size, &temp)) {
-						runX = true;
-					}
-					position_size.x += velocity_x * deltaTime;
+			if (checkCollision(&position_size, &collision_rects[i])) {
+				runX = true;
+			}
+			position_size.x += velocity_x * deltaTime;
 
-					position_size.y -= velocity_y * deltaTime;
+			position_size.y -= velocity_y * deltaTime;
 
-					if (checkCollision(&position_size, &temp)) {
-						runY = true;
-					}
+			if (checkCollision(&position_size, &collision_rects[i])) {
+				runY = true;
+			}
 
-					position_size.x -= velocity_x * deltaTime;
+			position_size.x -= velocity_x * deltaTime;
 
-					if (runX) {
-						position_size.x += velocity_x * deltaTime;
-					}
-					if (runY) {
-						position_size.y += velocity_y * deltaTime;
-					}
-				}
+			if (runX) {
+				position_size.x += velocity_x * deltaTime;
+			}
+			if (runY) {
+				position_size.y += velocity_y * deltaTime;
 			}
 		}
 	}

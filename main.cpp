@@ -123,12 +123,12 @@ void Render() {
 	render_map(-camera.x,-camera.y);
 
 	Player->draw(Player->animator->get_src(), camera.x, camera.y);
-	fpsText->draw();
 
 	averageFPS += 1 / deltaTime;
 	frameCounter += 1;
 
-	fpsText->setText("Fps: " + to_string(static_cast<int>(std::floor(averageFPS/frameCounter))));
+	fpsText->setText("Fps: " + to_string(static_cast<int>(std::floor(1/deltaTime))));
+	fpsText->draw();
 
 	SDL_RenderPresent(renderer);
 }
@@ -159,7 +159,7 @@ int main() {
 
 	char plrFilePath[] = ".\\Resources\\Char_Sprites\\char_spritesheet.png";
 
-	SDL_FRect playerStartTransform = { 100, 100, 25, 25 };
+	SDL_FRect playerStartTransform = { 300, 300, 25, 25 };
 
 	try
 	{
